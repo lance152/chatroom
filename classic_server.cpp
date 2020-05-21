@@ -26,12 +26,11 @@ int main(void){
     perror("bind error");
     exit(-1);
   }
-  printf("bind successfully");
 
   int ret = listen(listener,5);//3. 监听端口
 
   //接受客户端连接
-  struct sockaddr_in clinetAddr;
+  struct sockaddr_in clientAddr;
   socklen_t clientAddr_size = sizeof(clientAddr);
   int clientSock = accept(listener,(struct sockaddr*)&clientAddr,&clientAddr_size);
 

@@ -17,12 +17,12 @@ int main(void){
     perror("connect error");
     exit(-1);
   }
-
-  char buff[40];
+  connect(sock,(struct sockaddr*)&serverAddr,sizeof(serverAddr));
+  char buffer[40];
   read(sock,buffer,sizeof(buffer)-1);
 
   printf("Message from server:%s \n",buffer);
-  close(socket);
+  close(sock);
 
   return 0;
 }
