@@ -36,3 +36,13 @@
 2. connect（） 连接服务器
 3. recv/send 接受发送数据
 4. close（） 关闭socket
+
+服务器端：
+Server.h,Server.cpp 服务器端类声明及实现
+ServerMain.cpp 服务器端主函数
+
+客户端：
+Client.h, Client.cpp 客户端类实现
+ClientMain.cpp 客户端主函数
+
+Common.h 为公共头文件，包括所有的常量定义以及socket网络编程头文件
