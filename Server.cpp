@@ -67,7 +67,7 @@ int Server::SendBroadcastMessage(int clientfd){
   bzero(buf,BUF_SIZE);
   bzero(message,BUF_SIZE);
 
-  cout<<"read from client (ClientId ="<<clientfd<<endl;
+  cout<<"read from client (ClientId ="<<clientfd<<")"<<endl;
   int len = recv(clientfd,buf,BUF_SIZE,0);
 
   if(len==0){

@@ -7,7 +7,8 @@ using namespace std;
 Client::Client():
   sock(0),
   pid(0),
-  epfd(0){
+  epfd(0),
+  isClientAlive(true){
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(SERVER_PORT);
     serverAddr.sin_addr.s_addr = inet_addr(SERVER_IP);
@@ -66,7 +67,7 @@ void Client::Start(){
   //处理就绪事件
 
   //epoll events 队列
-  struct epoll_events events[2]; //只有两个事件
+  struct epoll_event events[2]; //只有两个事件
 
   Connect();
 
@@ -94,7 +95,7 @@ void Client::Start(){
         isClientAlive = 0;
       }else{
         //用户输入消息，写入pipe
-        if（write(pipe_fd[1],message,strlen(message)-1)<0){
+        if(write(pipe_fd[1],message,strlen(message)-1)<0){
           perror("fork error");
           exit(-1);
         }
