@@ -50,7 +50,7 @@ void Server::Init(){
   addfd(epfd,listener,true);
 }
 
-void Server::close(){
+void Server::Close(){
   //关闭socket
   close(listener);
   //关闭epoll
@@ -64,7 +64,7 @@ int Server::SendBroadcastMessage(int clientfd){
   //4. 格式化发送的消息内容
   //5. 遍历客户端列表依次发送消息
   char buf[BUF_SIZE], message[BUF_SIZE];
-  bzeros(buf,BUF_SIZE);
+  bzero(buf,BUF_SIZE);
   bzero(message,BUF_SIZE);
 
   cout<<"read from client (ClientId ="<<clientfd<<endl;
@@ -76,13 +76,13 @@ int Server::SendBroadcastMessage(int clientfd){
 
     //在clients_lists中删除该客户端
     clients_list.remove(clientfd);
-    cout<<"ClientID = "<<clientid<<" closed.\n now there are "
+    cout<<"ClientID = "<<clientfd<<" closed.\n now there are "
     <<clients_list.size()<<" clients in the chatroom"<<endl;
   }else{
     //客户端没有中止连接
-    if(clients_list==1){
+    if(clients_list.size()==1){
       //chatroom中只有这一个用户
-      send(clientfd,CAUTION,CAUTION.length(),0);
+      send(clientfd,CAUTION,strlen(CAUTION),0);
       return len;
     }
     //否则需要向所有其他的用户发送消息
@@ -136,7 +136,7 @@ void Server::Start(){
         //加入clients_lists
         clients_list.push_back(clientfd);
         cout<<"Add new clientfd = "<<clientfd<<" to epoll"<<endl;
-        cout<<"Now there are "<<clients_lists.size()<<" clients in the chat room"<<endl;
+        cout<<"Now there are "<<clients_list.size()<<" clients in the chat room"<<endl;
 
         //服务器发送欢迎信息
         cout<<"Welcome message"<<endl;
@@ -160,5 +160,5 @@ void Server::Start(){
       }
     }
   }
-  CLose();
+  Close();
 }
