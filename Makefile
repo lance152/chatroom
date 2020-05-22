@@ -10,3 +10,6 @@ Server.o: Server.cpp Server.h Common.h
 
 Client.o: Client.cpp Client.h Common.h
 	$(CC) $(CFLAGS) -c Client.cpp
+
+clean:
+	rm -f *.o chatroom_server chatroom_client
