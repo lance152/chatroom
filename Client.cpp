@@ -84,13 +84,13 @@ void Client::Start(){
     //因为子进程只负责向管道写入数据，所以要关闭pipe的读端
     close(pipe_fd[0]);
 
-    cout<<"Enter 'EXIT' to quit chatroom"<<endl;
+    cout<<"Enter 'exit' to quit chatroom"<<endl;
 
     while(isClientAlive){
       bzero(message,BUF_SIZE);
       fgets(message,BUF_SIZE,stdin);
 
-      if(strncmp(message,EXIT,strlen(EXIT)==0)){
+      if(strncasecmp(message,EXIT,strlen(EXIT))==0){
         //用户选择退出chatroom
         isClientAlive = 0;
       }else{

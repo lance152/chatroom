@@ -76,7 +76,7 @@ int Server::SendBroadcastMessage(int clientfd){
 
     //在clients_lists中删除该客户端
     clients_list.remove(clientfd);
-    cout<<"ClientID = "<<clientfd<<" closed.\n now there are "
+    cout<<"ClientID = "<<clientfd<<" closed.\n Now there are "
     <<clients_list.size()<<" clients in the chatroom"<<endl;
   }else{
     //客户端没有中止连接
