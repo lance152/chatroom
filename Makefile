@@ -9,4 +9,4 @@ Server.o: Server.cpp Server.h Common.h
 	$(CC) $(CFLAGS) -c Server.cpp
 
 Client.o: Client.cpp Client.h Common.h
-	$(CC) $(CFLAGS) -c CLient.cpp
+	$(CC) $(CFLAGS) -c Client.cpp
