@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class CLient{
+class Client{
 public:
   //无参数构造
   Client();
