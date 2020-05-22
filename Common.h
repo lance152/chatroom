@@ -55,8 +55,7 @@ static void addfd(int epollfd,int fd,bool enable_et){
   //设置fd为非阻塞模式
   fcntl(fd,F_SETFL,fcntl(fd,F_GETFD,0) | O_NONBLOCK);
   printf("fd added to epoll!\n\n");
-
 }
-
+//这里定义这个函数是因为client和server都会用到
 
 #endif
